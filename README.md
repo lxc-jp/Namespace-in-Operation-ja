@@ -12,3 +12,7 @@ lwn.net で 2013 年頃に連載されていた Namespace in Operation シリー
 * [Mount namespaces, mount propagation, and unbindable mounts](http://lwn.net/Articles/690679/)
 
 これらの文書については、元の文書のライセンスが Creative Commons ではないので、公開の範囲外です (そもそも訳してません)。
+
+## ステータス
+
+手元にある翻訳は Markdown ではないので、手動で修正しながらゆっくり push していきます。Part.1 以外の文書の公開はしばらくお待ちください。
