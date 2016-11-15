@@ -1,3 +1,9 @@
+# この文書について
+
+この文書は [lwn.net](https://lwn.net/) において 2013 年に公開された Namespace in Operation シリーズのパート 1  ([http://lwn.net/Articles/531114/](http://lwn.net/Articles/531114/)を翻訳したものです。
+
+この文書のライセンスは原文と同じく、[Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) のもとに提供されています。
+
 # Namespaces in operation, part 1: namespace 概観
 
 Linux 3.8 のマージウィンドウでは，Eric Biederman のかなり大きなサイズの[ユーザ名前空間と関連するパッチ](http://lwn.net/Articles/528078/)群が受け入れられているのが目に入る。完了するにはまだ細かい点が残っているものの (例えば多数の Linux ファイルシステムがまだユーザ名前空間対応していない)、ユーザ名前空間の実装は機能的な部分では完成した。
