@@ -15,4 +15,4 @@ lwn.net で 2013 年頃に連載されていた Namespaces in Operation シリ�
 
 ## ステータス
 
-手元にある翻訳は Markdown ではないので、手動で修正しながらゆっくり push していきます。Part.1, Part.2, Part.3 以外の文書の公開はしばらくお待ちください。
+手元にある翻訳は Markdown ではないので、手動で修正しながらゆっくり push していきます。Part.1, Part.2, Part.3, Part.4 以外の文書の公開はしばらくお待ちください。
