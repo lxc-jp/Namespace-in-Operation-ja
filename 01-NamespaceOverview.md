@@ -18,13 +18,13 @@ Linux 3.8 のマージウィンドウでは，Eric Biederman のかなり大き�
 
 以下の議論では、実装された順に (少なくとも実装が完成した順に) 名前空間を挙げていく。括弧内に挙られた `CLONE_NEW*` 指示子は、以降の記事で述べる名前空間の API (`clone(), unshare(), setns()`) を使うときの名前空間を示すのに使われる定数名である。
 
-[マウント名前空間](http://lwn.net/2001/0301/a/namespaces.php3) (`CLONE_NEWNS`, Linux 2.4.19) はプロセスグループから見えるマウントポイントの組を隔離する。マウント名前空間の追加で、[mount()](http://man7.org/linux/man-pages/man2/mount.2.html)と[umount()](http://man7.org/linux/man-pages/man2/umount.2.html)システムコールは、システム上の全てのプロセスから見えるグローバルなマウントポイントに対する操作を止め、代わりに呼び出したプロセスに紐付いたマウント名前空間にだけ影響を与える操作を行う。
+[マウント名前空間](http://lwn.net/2001/0301/a/namespaces.php3) (`CLONE_NEWNS`, Linux 2.4.19) はプロセスグループから見えるマウントポイントの組を隔離する。マウント名前空間の追加で、[`mount()`](http://man7.org/linux/man-pages/man2/mount.2.html)と[`umount()`](http://man7.org/linux/man-pages/man2/umount.2.html)システムコールは、システム上の全てのプロセスから見えるグローバルなマウントポイントに対する操作を止め、代わりに呼び出したプロセスに紐付いたマウント名前空間にだけ影響を与える操作を行う。
 
 マウント名前空間が呼び出されると、chroot jail と同様の環境が作成される。しかし、`chroot()` システムコールの使用と比べると、マウント名前空間は、このようなタスクに対してよりセキュアで柔軟性がある。他にマウント名前空間の[より洗練された使い方](http://www.ibm.com/developerworks/linux/library/l-mount-namespaces/index.html)をすることも可能である。例えば、分離されたマウント名前空間は、マスター・スレーブ関係で設定することも可能である。なので、マウントイベントは自動的にある名前空間から別の名前空間に伝搬する。これは、例えば、ある名前空間内でマウントされた光学ディスクデバイスを、自動的に他の名前空間で出現させることもできる。
 
 マウント名前空間は、2002 年に Linux に実装された名前空間の最初のものである。この事実が "NEWNS" という他に比べると一般的な名前 ("new namespace" の略) が付いている理由である。その時点では、誰も他の異なるタイプの名前空間が将来必要になってくるであろう事を考えていなかったのである。
 
-[UTS名前空間](http://lwn.net/Articles/179345/) (`CLONE_NEWUTS`, Linux 2.6.19) は 2 つのシステムの識別子を隔離する。その識別子とは、[uname()](http://man7.org/linux/man-pages/man2/uname.2.html) システムコールによって返される `nodename` と `domainname` である。この名前は `sethostname()` と `setdomainname()` システムコールで設定される。コンテナのコンテキストでは、UTS 名前空間機能は、コンテナごとに自分のホスト名と NIS ドメインネームを持つことができるようになる。これは、名前に基づいたアクションを行う初期化や設定スクリプトで役に立つ。"UTS" とは `uname()` システムコールに渡される構造体 `struct utsname` に由来する。構造体の名前は "UNIX Time-sharing System" に由来する。
+[UTS名前空間](http://lwn.net/Articles/179345/) (`CLONE_NEWUTS`, Linux 2.6.19) は 2 つのシステムの識別子を隔離する。その識別子とは、[`uname()`](http://man7.org/linux/man-pages/man2/uname.2.html) システムコールによって返される `nodename` と `domainname` である。この名前は `sethostname()` と `setdomainname()` システムコールで設定される。コンテナのコンテキストでは、UTS 名前空間機能は、コンテナごとに自分のホスト名と NIS ドメインネームを持つことができるようになる。これは、名前に基づいたアクションを行う初期化や設定スクリプトで役に立つ。"UTS" とは `uname()` システムコールに渡される構造体 `struct utsname` に由来する。構造体の名前は "UNIX Time-sharing System" に由来する。
 
 [IPC名前空間](http://lwn.net/Articles/187274/) (`CLONE_NEWIPC`, Linux 2.6.19) は特定の interprocess communication (IPC) リソース、すなわち、[System V IPC](http://man7.org/linux/man-pages/man7/svipc.7.html)オブジェクfトと (Linux 2.6.30 以降の) [POSIX message queues](http://man7.org/linux/man-pages/man7/mq_overview.7.html)を隔離する。これらの IPC メカニズムの共通の特徴は、IPC オブジェクトをファイルシステムのパス名以外の仕組みで特定するということである。IPC 名前空間はそれぞれ自身の System V IPC 識別子と POSIX メッセージキューファイルシステムを持つ。
 
