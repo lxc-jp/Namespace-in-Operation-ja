@@ -1,6 +1,6 @@
 # この文書について
 
-この文書は [lwn.net](https://lwn.net/) において 2013 年に公開された Namespaces in Operation シリーズのパート 2  ([http://lwn.net/Articles/531381/](http://lwn.net/Articles/531381/)を翻訳したものです。
+この文書は [lwn.net](https://lwn.net/) において 2013 年に公開された Namespaces in Operation シリーズのパート 2  ([http://lwn.net/Articles/531381/](http://lwn.net/Articles/531381/))を翻訳したものです。
 
 この文書のライセンスは原文と同じく、[Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) のもとに提供されています。
 
